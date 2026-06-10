@@ -1,49 +1,142 @@
-
-/* Background */
+/* Background & Global Text Colors */
 body {
     font-family: Helvetica, sans-serif;
     margin: 0;
-    padding: 50px;
-    background-image: url('images/mainbg.jpg'); /* Replace with your image filename */
+    padding: 0 50px;
+    background-image: url('images/BG.png'); 
     background-size: cover; 
     background-position: center; 
     background-repeat: no-repeat; 
     background-attachment: fixed; 
+    color: #ffffff; /* Default fallback text to clean white for readability */
 }
 
-/* Intro Section */
+/* Full Screen Intro Wrapper */
+.hero-section {
+    display: flex;
+    align-items: center;
+    height: 100vh; 
+    box-sizing: border-box;
+}
+
+/* Intro Section Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.fade-in-item {
+    opacity: 0;
+    animation: fadeInUp 0.8s ease-out forwards;
+}
+
+h1.fade-in-item { animation-delay: 0.1s; }
+.sub-heading.fade-in-item { animation-delay: 0.3s; }
+.hero-buttons.fade-in-item { animation-delay: 0.5s; }
+.greeting.fade-in-item { animation-delay: 0.7s; }
+.pfp.fade-in-item { animation-delay: 0.9s; }
+
+/* 1 & 2. Main Title Glow Setup */
 h1 {
     font-size: 80px;
-    color: rgb(131, 46, 152);
+    color: #e0aaff; 
     margin-bottom: 0px;
-}
-.wave-header {
-  display: flex;
-  font-family: 'Arial Black', sans-serif;
-  font-size: 4rem;
-  color: #333;
+    text-shadow: 0 0 10px rgba(131, 46, 152, 0.8), 0 0 25px rgba(218, 112, 214, 0.6);
 }
 
-p {
+/* Sub-heading Glow Setup */
+.sub-heading {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 19px; 
+    font-weight: bold;
+    color: #f72585; /* Vibrant pop color */
+    margin-bottom: 20px;
+    white-space: nowrap; 
+    text-shadow: 0 0 8px rgba(247, 37, 133, 0.7), 0 0 20px rgba(247, 37, 133, 0.4);
+}
+
+/* Section Headings Universal Glow Styling */
+.timeline-section h2, 
+.services-section h2, 
+.projects-section h2, 
+.new-section h2 {
+    font-size: 40px;
+    color: #da70d6; 
+    text-align: center;
+    margin-bottom: 40px;
+    text-shadow: 0 0 10px rgba(218, 112, 214, 0.8), 0 0 25px rgba(131, 46, 152, 0.5);
+}
+
+/* Action Buttons Custom Glow & Layout */
+.hero-buttons {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 10px 18px;
+    font-size: 15px;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 25px;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-primary {
+    background-color: rgb(131, 46, 152);
+    color: white;
+    box-shadow: 0 0 12px rgba(131, 46, 152, 0.6);
+}
+
+.btn-primary:hover {
+    background-color: mediumorchid;
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(218, 112, 214, 0.9);
+}
+
+.btn-secondary {
+    background-color: rgba(255, 255, 255, 0.15);
+    color: #e0aaff;
+    border: 1px solid rgba(218, 112, 214, 0.5);
+    backdrop-filter: blur(5px);
+}
+
+.btn-secondary:hover {
+    background-color: rgba(218, 112, 214, 0.25);
+    transform: translateY(-2px);
+    box-shadow: 0 0 15px rgba(218, 112, 214, 0.5);
+}
+
+/* Hero Paragraph Conversion to White */
+.greeting {
     font-family: 'Times New Roman', Times, serif;
     font-size: 21px;
-    font-weight: bold;
-    color: mediumorchid;
-    margin-bottom: 20px;
+    font-style: normal;
+    color: #ffffff; 
+    text-align: justify;
+    text-indent: 50px; 
+    line-height: 1.6;  
 }
 
-/* Remove italics from the greeting message */
-.greeting {
-    font-style: normal;
-    color: black;
+.intro {
+    flex: 1;
+    padding-right: 60px; 
 }
 
 .pfp {
     width: 350px;
-    height: auto;
+    height: 350px;      
+    object-fit: cover;  
     border-radius: 50%;
-    margin-top: 70px;
-    line-height:1;
+    box-shadow: 0 0 25px rgba(131, 46, 152, 0.5);
 }
 
 .container {
@@ -53,109 +146,377 @@ p {
     justify-content: space-between;
 }
 
-/* Previous Projects Section */
+/* Lowkey Scroll Entrance Animation */
+@keyframes scrollReveal {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.scroll-animate {
+    animation: scrollReveal linear both;
+    animation-timeline: view();
+    animation-range: entry 5% cover 25%;
+}
+
+/* 3. Timeline Layout: Swapped to Solid Crisp White Cards */
+.timeline-section {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.timeline-container {
+    display: flex;
+    gap: 40px;
+}
+
+.timeline-col {
+    flex: 1;
+}
+
+.timeline-col h3 {
+    font-size: 24px;
+    color: mediumorchid;
+    border-bottom: 2px solid rgba(218, 112, 214, 0.3);
+    padding-bottom: 10px;
+    text-shadow: 0 0 8px rgba(218, 112, 214, 0.4);
+}
+
+.timeline-card {
+    background: #ffffff; /* Changed to solid white */
+    padding: 20px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+}
+
+.timeline-card h4 {
+    margin: 0 0 5px 0;
+    font-size: 19px;
+    color: rgb(131, 46, 152); /* Dark purple context for high visibility inside light card */
+}
+
+.timeline-meta {
+    margin: 0 0 10px 0 !important;
+    font-size: 14px !important;
+    color: #555555 !important;
+}
+
+.timeline-desc {
+    margin: 0 !important;
+    font-size: 16px !important;
+    font-weight: normal !important;
+    color: #111111 !important; /* Dark text inside white background card */
+    font-family: Helvetica, Arial, sans-serif !important;
+}
+
+/* "What I Do" Stacked Deck Hover Mechanism */
+.services-section {
+    width: 100%;
+    margin-top: 60px;
+}
+
+.card-deck {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 250px;
+    position: relative;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.service-card {
+    position: absolute;
+    width: 260px;
+    height: 180px;
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+    text-align: left;
+}
+
+.service-card h3 {
+    color: rgb(131, 46, 152);
+    margin-top: 0;
+}
+
+.service-card p {
+    font-family: Helvetica, sans-serif !important;
+    font-weight: normal !important;
+    font-size: 15px !important;
+    color: #222222 !important;
+    line-height: 1.4;
+}
+
+.card-1 { transform: rotate(-4deg) translateX(-15px); z-index: 3; }
+.card-2 { transform: rotate(0deg); z-index: 2; }
+.card-3 { transform: rotate(4deg) translateX(15px); z-index: 1; }
+
+.card-deck:hover .card-1 { transform: rotate(0deg) translateX(-290px); }
+.card-deck:hover .card-2 { transform: rotate(0deg) translateX(0px); z-index: 4; }
+.card-deck:hover .card-3 { transform: rotate(0deg) translateX(290px); }
+
+/* 4. Recent Projects Styling Adjustments */
 .projects-section {
     width: 100%;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
-.projects-section h2 {
-    font-size: 40px;
-    color: rgb(131, 46, 152);
+.showcase-block {
+    margin-bottom: 60px;
+}
+
+.showcase-block h3 {
+    color: #e0aaff; 
+    font-size: 24px;
     margin-bottom: 20px;
+    text-shadow: 0 0 8px rgba(224, 170, 255, 0.6);
 }
 
-/* Projects Gallery */
+.main-showcase {
+    max-width: 700px;
+    width: 100%;
+    height: auto;
+    box-shadow: 0 0 20px rgba(0,0,0,0.6);
+}
+
+/* Container adjusted to perfectly center and match your main showcase */
+.sub-screenshots {
+    display: flex;
+    justify-content: center;       /* Centers the 3 images within the flex row */
+    gap: 15px;                     /* Clean spacing between the cards */
+    max-width: 700px;              /* Matches your main-showcase width */
+    margin: 20px auto 0 auto;      /* The "auto" on left/right perfectly centers the block on the page */
+    padding: 0;                    /* Resets any default block padding */
+}
+
+/* Upgraded Sub-images to scale to the absolute maximum side-by-side limit */
+.sub-img {
+    flex: 1;                       /* Forces all 3 images to share space equally */
+    max-width: calc((100% - 30px) / 3); /* Dynamically scales them to perfectly split the 700px width minus the gaps */
+    height: 150px;                 /* Preserves aspect ratio beautifully at a larger size */
+    object-fit: cover;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    cursor: pointer;               
+}
+
+/* Premium hover pop effect */
+.sub-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(218, 112, 214, 0.4); 
+}
+
+.showcase-info {
+    max-width: 700px;
+    margin: 25px auto 0 auto;
+    text-align: justify;
+}
+
+/* description changed to crisp white */
+.showcase-text {
+    font-family: Helvetica, Arial, sans-serif !important;
+    font-weight: normal !important;
+    font-size: 16px !important;
+    color: #ffffff !important; 
+    line-height: 1.6;
+}
+
+/* Study link changed to glowing purple */
+.study-link {
+    color: #da70d6; 
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+    display: inline-block;
+    margin-top: 5px;
+    text-shadow: 0 0 6px rgba(218, 112, 214, 0.5);
+}
+
+.study-link:hover {
+    text-decoration: underline;
+    color: #e0aaff;
+}
+
+.soft-hr {
+    border: 0;
+    height: 1px;
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(218, 112, 214, 0.3), rgba(0, 0, 0, 0));
+    margin: 50px 0;
+}
+
+/* Previous Projects Layout: Thumbnails */
 .projects-gallery {
     display: flex;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-}
-
-.projects1-gallery {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
+    gap: 30px;
     flex-wrap: wrap;
 }
 
 .project-img {
-    width: 500px;
-    height: 300px;
-    object-fit: cover;
     border-radius: 10px;
-    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.5);
     transition: transform 0.3s ease-in-out;
 }
 
+.previous-thumb {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+}
 
 .project-img:hover {
-    transform: scale(1.1);
+    transform: scale(1.05); 
+}
+
+figcaption {
+    margin-top: 10px;
+    font-weight: bold;
+    color: #e0aaff;
+    text-shadow: 0 0 5px rgba(224, 170, 255, 0.5);
 }
 
 .new-section {
     width: 100%;
     text-align: center;
-    margin-top: 50px;
+    margin-top: 80px;
 }
 
-.new-section h2 {
-    font-size: 40px;
-    color: rgb(131, 46, 152);
-    margin-bottom: 20px;
+/* Skills Configurations */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    flex-wrap: wrap;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.skill-card {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1); /* Dark mode card tint */
+    padding: 10px 15px;
+    border-radius: 15px;
+    transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+    border: 1px solid rgba(255, 255, 255, 0.05);
 }
 
 .skill-icon {
-    width: 80px;
-    height: 80px;
+    width: 65px;
+    height: 65px;
     object-fit: contain;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    border-radius: 10px; 
 }
 
+.style-inline-icon {
+    margin-left: 5px;
+}
 
+.rating-dots {
+    display: flex;
+    gap: 6px;
+    max-width: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-width 0.4s ease, opacity 0.3s ease, margin-left 0.3s;
+    align-items: center;
+}
+
+.dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.2); 
+}
+
+/* 5. Changed Skill Circles indicator from Blue to Glowing Neon Orchid Purple */
+.dot.filled {
+    background-color: #da70d6; 
+    box-shadow: 0 0 8px #da70d6;
+}
+
+.dot.half {
+    background: linear-gradient(90deg, #da70d6 50%, rgba(255, 255, 255, 0.2) 50%);
+    box-shadow: -2px 0 6px rgba(218, 112, 214, 0.4);
+}
+
+.skill-card:hover {
+    transform: scale(1.06);
+    background: rgba(131, 46, 152, 0.25);
+    box-shadow: 0 4px 20px rgba(131, 46, 152, 0.4);
+    border-color: rgba(218, 112, 214, 0.3);
+}
+
+.skill-card:hover .rating-dots {
+    max-width: 120px;
+    opacity: 1;
+    margin-left: 15px;
+}
+
+/* 6. Footnote: Made background heavily transparent and responsive to dark mode theme */
 .footnote {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    background-color: rgba(0, 0, 0, 0.8);
-    border-radius: 30px, 30px, 30px, 30px;
-    padding: 20px;
-    color: white;
-    margin-top: 50px;
+    background-color: rgba(20, 10, 25, 0.4); /* Highly transparent deep purple-tint tint */
+    border: 1px solid rgba(218, 112, 214, 0.2);
+    backdrop-filter: blur(12px); /* High-end glassmorphism look */
+    border-radius: 30px; 
+    padding: 20px 40px;
+    margin-top: 80px;
+    margin-bottom: 40px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .footer-icon {
     width: 80px;
     height: 80px;
     object-fit: contain;
-    margin-right: 20px;
 }
 
 .contact-info p {
     margin: 5px 0;
     font-size: 18px;
+    color: #ffffff; /* Clean white text */
+    font-family: Helvetica, sans-serif;
+    font-weight: normal;
 }
 
 .contact-info a {
-    color: mediumorchid;
+    color: #da70d6;
     text-decoration: none;
+    font-weight: bold;
+}
+
+.contact-info a:hover {
+    text-decoration: underline;
+    color: #e0aaff;
 }
 
 .back-to-top {
-    background-color: mediumorchid;
+    background-color: rgb(131, 46, 152);
     color: white;
     border: none;
-    padding: 10px 15px;
+    padding: 10px 20px;
     font-size: 18px;
     cursor: pointer;
     border-radius: 5px;
-    transition: background-color 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 0 10px rgba(131, 46, 152, 0.5);
 }
 
 .back-to-top:hover {
-    background-color: rgb(131, 46, 152);
+    background-color: #da70d6;
+    box-shadow: 0 0 15px rgba(218, 112, 214, 0.8);
 }
