@@ -294,7 +294,7 @@ h1 {
     display: flex;
     justify-content: center;       /* Centers the 3 images within the flex row */
     gap: 15px;                     /* Clean spacing between the cards */
-    max-width: 700px;              /* Matches your main-showcase width */
+    max-width: 700px;              /* Matches main-showcase width */
     margin: 20px auto 0 auto;      /* The "auto" on left/right perfectly centers the block on the page */
     padding: 0;                    /* Resets any default block padding */
 }
@@ -332,7 +332,7 @@ h1 {
     line-height: 1.6;
 }
 
-/* Study link changed to glowing purple */
+
 .study-link {
     color: #da70d6; 
     font-weight: bold;
@@ -440,7 +440,6 @@ figcaption {
     background-color: rgba(255, 255, 255, 0.2); 
 }
 
-/* 5. Changed Skill Circles indicator from Blue to Glowing Neon Orchid Purple */
 .dot.filled {
     background-color: #da70d6; 
     box-shadow: 0 0 8px #da70d6;
@@ -464,7 +463,7 @@ figcaption {
     margin-left: 15px;
 }
 
-/* 6. Footnote: Made background heavily transparent and responsive to dark mode theme */
+/* 6. Footnote: transparent and responsive to dark mode theme */
 .footnote {
     display: flex;
     align-items: center;
